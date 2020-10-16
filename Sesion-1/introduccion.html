@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción</title>
+</head>
+<body>
+    
+    <!-- Todo lo que s trabaje con vue siempre debe estar en un container -->
+    <!-- las directivas aplican un comportamiento reactivo especial al DOM renderizado -->
+    
+    <!-- Interpolación -->
+    <div id="app">
+        <!-- <h1>Hola mundo</h1> -->
+        <h1>{{titulo}}</h1>
+
+        <ul>
+            <!-- directiva v-for con arreglo de string-->
+            <li v-for="fruta of frutas">{{fruta}}</li>
+        </ul>
+        
+        <ul>
+            <!-- directiva v-for con objetos-->
+            <li v-for="tio of tios">
+                {{tio.estado}}
+            </li>
+        </ul>
+    </div>
+
+    <!-- Renderización -->
+    <div id="counter">
+        Counter: {{ counter }}
+    </div>  
+
+    <!-- Vincular atributos de elementos-->
+    <div id="bind-attribute">
+        <span v-bind:title="message">
+          Hover your mouse over me for a few seconds to see my dynamically bound
+          title!
+        </span>
+    </div>
+
+    <!-- Manejo de la entrada del usuario -->
+    
+    <!-- v-on irectiva para adjuntar detectores de eventos que invocan métodos en nuestras instancias -->
+    <div id="event-handling">
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMessage">Reverse Message</button>
+    </div>
+
+    <!-- v-model directiva que hace que el enlace bidireccional entre la entrada del formulario y el estado de la aplicación sea muy sencillo -->
+    <div id="two-way-binding">
+        <p>{{ message }}</p>
+        <input v-model="message" />
+    </div>
+
+    <!-- Condicionales y Bucles -->
+    <div id="conditional-rendering">
+        <span v-if="seen">Now you see me</span>
+    </div>
+
+    <div id="list-rendering">
+        <ol>
+          <li v-for="todo in todos">
+            {{ todo.text }}
+            <span v-if="todo.text == 'Learn Vue' ">OOOOOOOOOOOOOOO</span>
+          </li>
+        </ol>
+        <todo-item v-for="todo,index in todos" v-bind:todo="todo" :key="todo+index"></todo-item>
+    </div>
+
+    <!-- Encima de nuestros propios scripts -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="intro.js"></script>
+</body>
+</html>
