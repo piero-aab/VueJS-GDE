@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sintaxis de Template </title>
+</head>
+<body>
+    
+    <!-- Todo lo que s trabaje con vue siempre debe estar en un container -->
+    <!-- las directivas aplican un comportamiento reactivo especial al DOM renderizado -->
+    
+    <!-- Interpolación -->
+    <h1>Interpolacion</h1>
+    <div id="app">
+        <!-- <h1>Interpolacion</h1> -->
+        
+        <h2>Texto</h2>
+        <p>{{msg1}}</p>
+        <p v-once >{{msg2}}</p>
+        <button v-on:click="msg1='Nuevo Mensaje 1'">cambiar mensaje 1</button> 
+        <button @click="msg2='Nuevo Mensaje 2'">cambiar mensaje 2</button>   
+    </div>
+
+    <!-- Renderización -->
+    <div id="counter">
+        <h2>HTML Puro</h2>
+        <p>{{rawHtml}}</p>
+        <p v-html="rawHtml" ></p>
+    </div>  
+
+    <!-- Vincular atributos de elementos-->
+    <div id="bind-attribute">
+        <h2>Atributos</h2>
+        <div v-bind:id="dinamicId">
+          div con Id dinamico
+        </div>
+        <button v-bind:disabled="isBoolean">Interpretacion Booleana</button>
+    </div>
+
+    <!-- Manejo de la entrada del usuario -->
+    
+    <!-- v-on irectiva para adjuntar detectores de eventos que invocan métodos en nuestras instancias -->
+    <div id="event-handling">
+        <h2>Usando Expresiones JavaScript</h2>
+        <p>{{ numerito + 1 }}</p>
+
+        <p>{{ ok ? 'Existe' : 'No existe' }}</p>
+
+        <p>{{ message.split('').reverse().join('') }}</p>
+        <h3>No admitido para multiples expresiones</h3>
+        <!-- <p>{{ var a = 1 }}</p>
+        <p>{{ if (ok) { return message } }}</p> -->
+
+
+<div v-bind:id="'list-' + id"></div>
+    </div>
+
+    <!-- v-model directiva que hace que el enlace bidireccional entre la entrada del formulario y el estado de la aplicación sea muy sencillo -->
+    <div id="two-way-binding">
+        <p>{{ message }}</p>
+        <input v-model="message" />
+    </div>
+
+    <!-- Condicionales y Bucles -->
+    <div id="conditional-rendering">
+        <span v-if="seen">Now you see me</span>
+    </div>
+
+    <div id="list-rendering">
+        <ol>
+          <li v-for="todo in todos">
+            {{ todo.text }}
+            <span v-if="todo.text == 'Learn Vue' ">OOOOOOOOOOOOOOO</span>
+          </li>
+        </ol>
+        <todo-item v-for="todo,index in todos" v-bind:todo="todo" :key="todo+index"></todo-item>
+    </div>
+
+    <!-- Encima de nuestros propios scripts -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="syntax.js"></script>
+</body>
+</html>
