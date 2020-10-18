@@ -55,42 +55,72 @@ const EventHandling = {
   
 Vue.createApp(EventHandling).mount('#event-handling')
 
-const TwoWayBinding = {
-    data() {
-        return {
-            message: 'Hello Vue!'
-        }
-    }
-}
-Vue.createApp(TwoWayBinding).mount('#two-way-binding')
-
 const ConditionalRendering = {
-    data() {
-      return {
-        seen: true
-      }
+  data() {
+    return {
+      seen: true
     }
+  }
 }
 Vue.createApp(ConditionalRendering).mount('#conditional-rendering')
 
-const ListRendering = {
-    data() {
-      return {
-        todos: [
-          { text: 'Learn JavaScript' },
-          { text: 'Learn Vue' },
-          { text: 'Build something awesome' }
-        ]
-      }
+const ArgumentsVue = {
+  data() {
+    return {
+      url: "https://www.youtube.com/watch?v=rY-FJvRqK0E"
+    }
+  },
+  methods: {
+    doSomething(event) {
+      event.target.setAttribute("href", "https://www.youtube.com/watch?v=rY-FJvRqK0E")
     }
   }
-  
-const vueappc = Vue.createApp(ListRendering)
+}
+Vue.createApp(ArgumentsVue).mount('#argumentsVue')
 
-// Define un nuevo componente llamado todo-item
+const DinamicArgumentsVue = {
+  data() {
+    return {
+      url: 'https://www.youtube.com/watch?v=rY-FJvRqK0E',
+      attributename: 'href'
+    }
+  },
+  methods: {
+    dosomething() {
+      return "href"
+    }
+  }
+}
 
-vueappc.component('todo-item', {
-  props: ['todo'],
-  template: '<li>{{ todo.text }}</li>'
-})
-vueappc.mount('#list-rendering')
+const Modifiers = {
+  data() {
+    return {
+      url: 'https://www.youtube.com/watch?v=rY-FJvRqK0E',
+      attributename: 'href'
+    }
+  },
+  methods: {
+    onSubmit() {
+      alert("evento interrumpido")
+    }
+  }
+}
+Vue.createApp(Modifiers).mount('#modifiers')
+
+const Shorthands = {
+  data() {
+    return {
+      url: 'https://www.youtube.com/watch?v=rY-FJvRqK0E',
+      key: 'href',
+      event: 'click'
+    }
+  },
+  methods: {
+    doSomething() {
+      return alert("evento click")
+    }
+  }
+}
+Vue.createApp(Shorthands).mount('#shorthands')
+
+
