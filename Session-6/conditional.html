@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+	<html lang="es">
+	<head>
+		<title>Clase 6</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<link rel="icon" type="image/png" href="/favicon.png">
+		<script src="https://unpkg.com/vue@next"></script>
+	</head>
+	<body>
+
+		<div> Clase de condicionales en vue </div>
+    <br>	
+    <br>	
+		<div id="app-html">
+			<div>Esto es un carrito de compras en html </div>
+      <br>	
+      <br>	
+      <div>Producto: zapatillas</div>
+      <div v-show="status">Disponible</div>
+      <div>Stock: {{stock}}</div>
+      <p v-if="stock > 5">En venta</p>
+      <p v-else-if="stock <= 5 && stock > 0">Últimas ofertas</p>
+      <p v-else>Agotado</p>
+			<button @click="agregar()"> Añadir a carrito </button>
+      <br>
+      <br>
+      <br>
+      <div>Cantidad de productos {{carrito.length}}</div>
+      <div>Mi carrito: </div>
+      <div
+        v-for="compra, index in carrito"
+        :key="index+'compra'"
+        >
+        {{compra}}
+      </div>
+		</div>
+	
+	</body>
+	<script src="./conditional.js"></script>
+
+</html>
