@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang = "es">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <link rel = "stylesheet" type = "text/css" href = "demo.css">
+        <script src = "https://unpkg.com/vue@next"></script>
+        <title> Demo </title>
+    </head> 
+    <body class = "letra">
+        <div id = "titulo"> 
+            <h2> {{title}} </h2>
+        </div>
+        <div id = "sintaxis_de_objeto" class = "contenedor">
+            <span style = "font-weight: bold;"> Binding HTML Classes </span>
+
+            <div class = "contenedor">
+                <span style = "font-weight: bold;"> Sintaxis de Objeto </span>
+                <div :class = "{ contenedor: isActive }">
+                    Tiene la clase {{isActive ? "contenedor": ""}}                 
+                </div>
+            </div>
+
+            <div class = "contenedor">
+                <span style = "font-weight: bold;"> Asignacion Multiple </span>
+                <div class = "static" :class = "{ contenedor: isActive, 'text-danger': hasError }">
+                    Tiene las clases static, contenedor {{hasError ? "y text-danger": ""}}
+                </div>
+                <button @click = "hasError = !hasError"> Cambiar text-danger </button>
+            </div>
+
+            <div class = "contenedor">
+                <span style = "font-weight: bold;"> Asignacion a Objeto </span>
+                <div class = "static" :class = "myObject" style="margin-top: 10px;">
+                    Tiene las clases static, contenedor {{myObject['text-danger'] ? "y text-danger": ""}}
+                </div>
+                <button @click = "myObject['text-danger'] = !myObject['text-danger']"> Cambiar text-danger de myObject </button>
+            </div>
+        </div>
+
+        <div class="contenedor">
+            <div id="cb_computed_property" class = "contenedor">
+                <span style = "font-weight: bold;"> Enlace a Propiedad Computada </span>
+                <div class = "static" :class = "classObject" style="margin-top: 10px;">
+                    Tiene las clases static, {{this.isActive && !this.error ? "contenedor": ""}} {{this.error && this.error.type === 'fatal' ? "y text-danger": ""}}
+                </div>
+            </div>
+        </div>
+
+        <div id = "sintaxis_de_array" class = "contenedor">
+ 
+            <div class = "contenedor">
+                <span style = "font-weight: bold;"> Sintaxis de Array </span>
+                <div :class = "[activeClass, errorClass]">
+                    Tiene la clase {{activeClass}} y {{errorClass}}                 
+                </div>
+            </div>
+
+            <div class = "contenedor">
+                <span style = "font-weight: bold;"> De manera Condicional </span>
+                <div :class = "[isActive ? activeClass : '', errorClass]" style="margin-top:5px;">
+                    Tiene la clase {{isActive ? "activeClass" : ""}} y {{errorClass}}                 
+                </div>
+
+                <!-- <div :class = "[{ contenedor: isActive }, errorClass]" style="margin-top:5px;">
+                    Tiene la clase {{isActive ? "activeClass" : ""}} y {{errorClass}}                 
+                </div> -->
+
+                <button @click = "isActive = !isActive"> Activar Contenedor </button>
+            </div>
+
+        </div>
+
+        <div class = "contenedor">
+            <span style = "font-weight: bold;"> Con Componentes </span>
+            <div class = "contenedor">             
+                <div id = "demoComponent">
+                    <my-component class = "contenedor"></my-component>
+                    <my-component :class = "{ contenedor: isActive}"></my-component>
+                    <button @click = "isActive = !isActive"> Activar Contenedor </button>
+                </div>
+            </div>
+
+            <div class = "contenedor">
+                <div id="demoComponent2">
+                    <my-component class = "contenedor"></my-component>
+                  </div>
+            </div>
+
+        </div>
+
+
+        <div id = "estilosDemo" class = "contenedor">
+            <span style = "font-weight: bold;"> Binding Style Classes </span>
+
+            <div class = "contenedor">
+                <span style = "font-weight: bold;"> Sintaxis de Objeto </span>
+                <div :style = "{ color: activeColor, fontSize: fontSize + 'px' }"> PRUEBA </div>
+            </div>
+
+            <div class = "contenedor">
+                <div :style = "styleObject"> PRUEBA </div>
+            </div>
+
+            <div class = "contenedor">
+                <span style = "font-weight: bold;"> Sintaxis de Array </span>
+                <div :style = "[baseStyles, overridingStyles]"> PRUEBA </div>
+            </div>
+
+            <div class = "contenedor">
+                <span style = "font-weight: bold;"> Valores múltiples </span>
+                <div :style = "{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"> PRUEBA </div>
+            </div>
+
+        </div>
+        
+        
+    </body>
+
+    <script src = "demo1.js"></script>
+
+</html>

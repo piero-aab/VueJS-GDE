@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@300&display=swap');
+
+.letra{
+    font-family: 'Exo', sans-serif;
+}
+
+.contenedor{
+    border-radius:3px;
+    box-shadow: 1px 1px 2px 1px #AFAFAF;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.text-danger{
+    background-color:#FF0000;
+    color: #FFF;
+}
+
+.foo{
+    background-color:#88f0b7;
+    color: #000; 
+}
